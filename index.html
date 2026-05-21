@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>다제약물 상호작용 확인</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>다제약물 상호작용 확인</h1>
+  <p class="subtitle">
+    두 가지 약물을 선택하고 상호작용 가능성을 확인해보세요.
+  </p>
+
+  <div class="container">
+
+    <div class="drug-box">
+      <h2>약물 선택 1</h2>
+
+      <input
+        type="text"
+        class="drug-search"
+        id="leftSearch"
+        placeholder="약물 검색"
+      >
+
+      <button class="drug left" data-drug="아세트아미노펜">아세트아미노펜</button>
+      <button class="drug left" data-drug="이부프로펜">이부프로펜</button>
+      <button class="drug left" data-drug="아스피린">아스피린</button>
+      <button class="drug left" data-drug="슈도에페드린">슈도에페드린</button>
+      <button class="drug left" data-drug="덱스트로메토르판">덱스트로메토르판</button>
+      <button class="drug left" data-drug="세티리진">세티리진</button>
+      <button class="drug left" data-drug="오메프라졸">오메프라졸</button>
+      <button class="drug left" data-drug="파모티딘">파모티딘</button>
+      <button class="drug left" data-drug="아목시실린">아목시실린</button>
+      <button class="drug left" data-drug="시프로플록사신">시프로플록사신</button>
+      <button class="drug left" data-drug="아지트로마이신">아지트로마이신</button>
+      <button class="drug left" data-drug="플루옥세틴">플루옥세틴</button>
+      <button class="drug left" data-drug="설트랄린">설트랄린</button>
+      <button class="drug left" data-drug="알프라졸람">알프라졸람</button>
+      <button class="drug left" data-drug="암로디핀">암로디핀</button>
+      <button class="drug left" data-drug="메트포르민">메트포르민</button>
+      <button class="drug left" data-drug="로사르탄">로사르탄</button>
+      <button class="drug left" data-drug="와파린">와파린</button>
+    </div>
+
+    <div class="center-area">
+
+      <div class="circle" id="leftCircle">약물 1</div>
+
+      <div class="line"></div>
+
+      <div class="circle" id="rightCircle">약물 2</div>
+
+      <div class="style-select">
+
+        <p>AI 설명 스타일 선택</p>
+
+        <label>
+          <input type="radio" name="aiStyle"
+          value="professional" checked>
+          전문적
+        </label>
+
+        <label>
+          <input type="radio" name="aiStyle"
+          value="simple">
+          간단 설명
+        </label>
+
+        <label>
+          <input type="radio" name="aiStyle"
+          value="queen">
+          QUEEN
+        </label>
+
+      </div>
+
+      <button id="checkBtn">확인하기</button>
+
+    </div>
+
+    <div class="drug-box">
+      <h2>약물 선택 2</h2>
+
+      <input
+        type="text"
+        class="drug-search"
+        id="leftSearch"
+        placeholder="약물 검색"
+      >
+
+      <button class="drug right" data-drug="아세트아미노펜">아세트아미노펜</button>
+      <button class="drug right" data-drug="이부프로펜">이부프로펜</button>
+      <button class="drug right" data-drug="아스피린">아스피린</button>
+      <button class="drug right" data-drug="슈도에페드린">슈도에페드린</button>
+      <button class="drug right" data-drug="덱스트로메토르판">덱스트로메토르판</button>
+      <button class="drug right" data-drug="세티리진">세티리진</button>
+      <button class="drug right" data-drug="오메프라졸">오메프라졸</button>
+      <button class="drug right" data-drug="파모티딘">파모티딘</button>
+      <button class="drug right" data-drug="아목시실린">아목시실린</button>
+      <button class="drug right" data-drug="시프로플록사신">시프로플록사신</button>
+      <button class="drug right" data-drug="아지트로마이신">아지트로마이신</button>
+      <button class="drug right" data-drug="플루옥세틴">플루옥세틴</button>
+      <button class="drug right" data-drug="설트랄린">설트랄린</button>
+      <button class="drug right" data-drug="알프라졸람">알프라졸람</button>
+      <button class="drug right" data-drug="암로디핀">암로디핀</button>
+      <button class="drug right" data-drug="메트포르민">메트포르민</button>
+      <button class="drug right" data-drug="로사르탄">로사르탄</button>
+      <button class="drug right" data-drug="와파린">와파린</button>
+    </div>
+
+  </div>
+
+  <div id="resultBox" class="result-box hidden">
+
+    <h2>상호작용 결과</h2>
+
+    <p>
+      <strong>선택한 약물:</strong>
+      <span id="selectedDrugs"></span>
+    </p>
+
+    <p>
+      <strong>위험도:</strong>
+      <span id="risk"></span>
+    </p>
+
+    <p>
+      <strong>설명:</strong>
+      <span id="summary"></span>
+    </p>
+
+    <p>
+      <strong>주의사항:</strong>
+      <span id="caution"></span>
+    </p>
+
+    <p>
+      <strong>AI 설명:</strong>
+      <span id="aiExplanation"></span>
+    </p>
+
+    <div class="notice">
+      ※ 본 결과는 학습 및 참고용 정보입니다.<br>
+      ※ 실제 복용 여부는 반드시 의사 또는 약사와 상담해야 합니다.<br>
+      ※ AI 설명은 의학적 진단이나 처방이 아닙니다.
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
